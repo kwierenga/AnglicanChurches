@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dev server",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:5177",
+      "webRoot": "${workspaceFolder}/src",
+      "preLaunchTask": "vite: dev",
+      "presentation": { "hidden": true }
+    }
+  ]
+}

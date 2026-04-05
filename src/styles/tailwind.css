@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  body { color: var(--acj-ink); background: var(--acj-bg); }
+  a { color: var(--acj-primary); }
+}
