@@ -1,3 +1,10 @@
 church_id,type,url,caption,credit,license,order
-st-jago-de-la-vega-cathedral,image,/media/stjago-front.jpg,"West front, 1930s","Placeholder","Unknown",1
-kingston-parish-church,image,/media/kingston-parish-01.jpg,"Nave interior","Placeholder","Unknown",1
+st-jago-de-la-vega-cathedral,image,https://res.cloudinary.com/kwierenga/image/upload/v1774647565/spanish-town-1_fdfjqi.jpg,"Cathedral of St. Jago de la Vega","","Unknown",1
+st-jago-de-la-vega-cathedral,image,https://res.cloudinary.com/kwierenga/image/upload/v1774647568/spanish-town-2_mwu2a9.jpg,"Cathedral of St. Jago de la Vega","","Unknown",2
+st-james-parish-church-mobay,image,https://res.cloudinary.com/kwierenga/image/upload/v1774647602/montego-bay-1_j6tuwf.jpg,"St. James Parish Church, Montego Bay","","Unknown",1
+st-anns-bay-parish-church,image,https://res.cloudinary.com/kwierenga/image/upload/v1774647556/st-anns-bay-1_vflxsr.jpg,"St. Ann's Bay Anglican Church","","Unknown",1
+st-thomas-anglican-lacovia,image,https://res.cloudinary.com/kwierenga/image/upload/v1774635202/lacovia-1_h8jutk.jpg,"St. Thomas Anglican Church, Lacovia","","Unknown",1
+st-thomas-anglican-lacovia,image,https://res.cloudinary.com/kwierenga/image/upload/v1774635205/lacovia-3_esqn6a.png,"St. Thomas Anglican Church, Lacovia","","Unknown",2
+old-ruins-black-river,image,https://res.cloudinary.com/kwierenga/image/upload/v1774647580/black-river-1_mtzfuc.jpg,"St. John the Evangelist ruins","","Unknown",1
+old-ruins-black-river,image,https://res.cloudinary.com/kwierenga/image/upload/v1774647586/black-river-2_jjvifi.jpg,"St. John the Evangelist ruins","","Unknown",2
+old-ruins-black-river,image,https://res.cloudinary.com/kwierenga/image/upload/v1774647592/black-river-3_ldiswz.jpg,"St. John the Evangelist ruins","","Unknown",3
