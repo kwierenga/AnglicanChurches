@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { FeatureCollection, Point } from 'geojson'
 import type { MapAdapter, ChurchFeature } from '../adapters/MapAdapter'
 import LeafletAdapter from '../adapters/LeafletAdapter'
@@ -11,10 +11,16 @@ export default function MapPanel(){
   const ref = useRef<HTMLDivElement>(null)
   const [adapter, setAdapter] = useState<MapAdapter>()
   const [data, setData] = useState<FeatureCollection<Point, ChurchFeature['properties']> | null>(null)
-  const [parish] = useQueryState('parish','')
+  const [parish, setParish] = useQueryState('parish','')
   const [id] = useQueryState('id','')
   const [klass] = useQueryState('class','')
   const [status] = useQueryState('status','')
+
+  const parishes = useMemo(()=>{
+    if(!data) return []
+    const set = new Set(data.features.map(f=>f.properties!.parish))
+    return [...set].sort()
+  },[data])
 
   useEffect(()=>{
     const a = new AdapterClass()
@@ -51,9 +57,17 @@ export default function MapPanel(){
 
   return (
     <>
-      <div className="absolute z-10 m-2 flex gap-2">
-        <button onClick={()=> adapter?.fitToAll()} className="bg-white/90 border rounded px-2 py-1 text-sm">Reset</button>
-        <button onClick={()=> parish ? adapter?.fitToParish(parish) : adapter?.fitToAll()} className="bg-white/90 border rounded px-2 py-1 text-sm">Zoom Parish</button>
+      <div className="absolute z-10 m-2 flex flex-wrap gap-1.5">
+        <button onClick={()=>{ setParish(''); adapter?.fitToAll() }}
+                className={`px-2 py-0.5 rounded-full text-xs border ${!parish ? 'bg-[#0A4C8A] text-white border-[#0A4C8A]' : 'bg-white/90 border-gray-300 hover:bg-gray-100'}`}>
+          All
+        </button>
+        {parishes.map(p=>(
+          <button key={p} onClick={()=> setParish(parish===p ? '' : p)}
+                  className={`px-2 py-0.5 rounded-full text-xs border ${parish===p ? 'bg-[#0A4C8A] text-white border-[#0A4C8A]' : 'bg-white/90 border-gray-300 hover:bg-gray-100'}`}>
+            {p}
+          </button>
+        ))}
       </div>
       <div ref={ref} className="w-full h-full" />
     </>

@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import MapPanel from '../components/MapPanel'
 import ChurchCard from '../components/ChurchCard'
 import About from './About'
 import Sources from './Sources'
 import Glossary from './Glossary'
+import { useQueryState } from '../lib/state'
 
 export default function Home(){
   const [route, setRoute] = useState(location.hash || '#/')
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [id] = useQueryState('id','')
+
   useEffect(()=>{
     const onHash = ()=> setRoute(location.hash || '#/')
     window.addEventListener('hashchange', onHash)
     return ()=> window.removeEventListener('hashchange', onHash)
   },[])
+
+  useEffect(()=>{
+    if(id && cardRef.current){
+      cardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  },[id])
 
   if(route.startsWith('#/about')) return <About />
   if(route.startsWith('#/sources')) return <Sources />
@@ -27,7 +37,7 @@ export default function Home(){
         <div className="border-b relative" style={{height:'25vh'}}>
           <MapPanel />
         </div>
-        <div className="p-4" style={{minHeight:'50vh'}}>
+        <div ref={cardRef} className="p-4" style={{minHeight:'50vh'}}>
           <ChurchCard />
         </div>
       </main>

@@ -26,8 +26,18 @@ export default function Sidebar(){
 
   const results: ChurchRow[] = q.trim() && fuse ? fuse.search(q).slice(0,8).map(r=>r.item) : []
 
+  const filtered = useMemo(()=> catalog.filter(c=>{
+    if(parish && c.parish !== parish) return false
+    if(klass && c.classification !== klass) return false
+    if(status && c.status !== status) return false
+    return true
+  }),[catalog, parish, klass, status])
+
   return (
     <div className="p-4 space-y-3">
+      <div className="text-xs text-gray-500 font-medium">
+        Showing {filtered.length} of {catalog.length} churches
+      </div>
       <div className="relative">
         <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search church name"
                className="w-full border rounded px-3 py-2" />
