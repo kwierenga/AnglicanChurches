@@ -19,7 +19,6 @@ export type MediaRow = z.infer<typeof MediaRowSchema>
 
 export const ChurchRowSchema = z.object({
   id: z.string().min(1, 'id required'),
-  slug: z.string().min(1, 'slug required'),
   name: z.string().min(1, 'name required'),
   parish: z.string().min(1, 'parish required'),
   classification: z.enum(['cathedral','church','chapel','mission','ruin']),

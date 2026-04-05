@@ -1,7 +1,7 @@
 import type { FeatureCollection, Feature, Point } from 'geojson'
 
 export type ChurchFeature = Feature<Point, {
-  id: string; slug: string; name: string; parish: string;
+  id: string; name: string; parish: string;
   classification: string; status: string;
 }>
 

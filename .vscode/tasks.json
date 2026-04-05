@@ -13,6 +13,12 @@
       "presentation": { "reveal": "silent", "panel": "dedicated" }
     },
     {
+      "label": "Add image to church",
+      "type": "shell",
+      "command": "npm run add:media -- --church \"${input:churchId}\" --url \"${input:imageUrl}\" --caption \"${input:caption}\" --credit \"${input:credit}\"",
+      "presentation": { "reveal": "always", "panel": "dedicated", "focus": true }
+    },
+    {
       "label": "build:data",
       "type": "shell",
       "command": "npm run build:data",
@@ -25,6 +31,28 @@
       "command": "npm run build",
       "group": { "kind": "build", "isDefault": true },
       "presentation": { "reveal": "always" }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "churchId",
+      "type": "promptString",
+      "description": "Church ID — e.g. kingston-parish-church"
+    },
+    {
+      "id": "imageUrl",
+      "type": "promptString",
+      "description": "Image URL (Cloudinary or other CDN)"
+    },
+    {
+      "id": "caption",
+      "type": "promptString",
+      "description": "Caption — e.g. 'West front, 1930s' (press Enter to skip)"
+    },
+    {
+      "id": "credit",
+      "type": "promptString",
+      "description": "Photographer / credit (press Enter to skip)"
     }
   ]
 }
