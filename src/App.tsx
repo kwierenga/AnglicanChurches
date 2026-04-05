@@ -8,6 +8,7 @@ export default function App(){
         <h1 className="text-xl font-semibold">Anglican Churches in Jamaica</h1>
         <nav className="ml-auto text-sm flex gap-4">
           <a href="#/about">About</a>
+          <a href="#/news">News</a>
           <a href="#/sources">Sources</a>
           <a href="#/glossary">Glossary</a>
         </nav>

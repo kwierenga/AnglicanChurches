@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar'
 import MapPanel from '../components/MapPanel'
 import ChurchCard from '../components/ChurchCard'
 import About from './About'
+import News from './News'
 import Sources from './Sources'
 import Glossary from './Glossary'
 import { useQueryState } from '../lib/state'
@@ -25,6 +26,7 @@ export default function Home(){
   },[id])
 
   if(route.startsWith('#/about')) return <About />
+  if(route.startsWith('#/news')) return <News />
   if(route.startsWith('#/sources')) return <Sources />
   if(route.startsWith('#/glossary')) return <Glossary />
 

@@ -9,7 +9,8 @@
     "build": "npm run build:data && vite build",
     "preview": "vite preview",
     "build:data": "tsx scripts/build-data.ts",
-    "add:media": "tsx scripts/add-media.ts"
+    "add:media": "tsx scripts/add-media.ts",
+    "fetch:news": "tsx scripts/fetch-news.ts"
   },
   "dependencies": {
     "@arcgis/core": "^4.30.0",
@@ -29,6 +30,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.20",
+    "cheerio": "^1.2.0",
     "csv-parse": "^5.5.6",
     "csv-stringify": "^6.7.0",
     "postcss": "^8.4.47",
