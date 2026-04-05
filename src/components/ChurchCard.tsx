@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { marked } from 'marked'
 import { useQueryState } from '../lib/state'
 import type { MediaRow } from '../lib/schemas'
@@ -7,7 +7,7 @@ type MediaIndex = Record<string, MediaRow[]>
 let _mediaIndex: MediaIndex | null = null
 async function getMediaIndex(): Promise<MediaIndex> {
   if(_mediaIndex) return _mediaIndex
-  const res = await fetch('/data/build/media-index.json')
+  const res = await fetch(`${import.meta.env.BASE_URL}data/build/media-index.json`)
   _mediaIndex = res.ok ? await res.json() : {}
   return _mediaIndex!
 }
@@ -22,7 +22,7 @@ export default function ChurchCard(){
     const s = slug || id
     if(!s){ setHtml('Select a church to see its details.'); setMedia([]); return }
     Promise.all([
-      fetch(`/content/churches/${s}.md`).then(r=> r.ok ? r.text() : ''),
+      fetch(`${import.meta.env.BASE_URL}content/churches/${s}.md`).then(r=> r.ok ? r.text() : ''),
       getMediaIndex()
     ]).then(([md, idx])=>{
       setHtml(md ? (marked.parse(md) as string) : 'No page yet.')

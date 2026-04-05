@@ -23,7 +23,7 @@ export default function MapPanel(){
       const p = new URLSearchParams(location.search); p.set('id', cid)
       history.pushState({},'',`?${p.toString()}`); window.dispatchEvent(new PopStateEvent('popstate'))
     }})
-    fetch('/data/build/churches.geo.json').then(r=>r.json()).then(fc=>{
+    fetch(`${import.meta.env.BASE_URL}data/build/churches.geo.json`).then(r=>r.json()).then(fc=>{
       setData(fc); a.plot(fc)
     })
     return ()=>a.destroy()
